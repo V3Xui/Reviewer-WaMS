@@ -4,933 +4,662 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMS Activities Showcase</title>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-    <style>
-        :root {
-            --bg: #fbfdfd;
-            --panel: #ffffff;
-            --muted: #6b7280;
-            --accent: #0f172a;
-            --ok: #16a34a;
-            --danger: #dc2626;
-            --codebg: #0b1220;
-            --codefg: #dbeafe;
-            --card: #f8fafc;
-            --border: #e6eef6;
-        }
-
-        body {
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            color: var(--accent);
-            background: var(--bg);
-            margin: 0;
-            padding: 28px;
-            line-height: 1.45;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 18px
-        }
-
-        h1 {
-            font-size: 20px;
-            margin: 0
-        }
-
-        p.lead {
-            color: var(--muted);
-            margin: 0
-        }
-
-        main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 18px;
-            max-width: 1100px
-        }
-
-        section.card {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            padding: 16px;
-            border-radius: 10px;
-        }
-
-        h2 {
-            margin: 0 0 8px 0;
-            font-size: 16px
-        }
-
-        .example {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            margin-top: 10px
-        }
-
-        .code,
-        .render {
-            width: 50%;
-            min-width: 280px;
-            border-radius: 8px;
-            padding: 12px;
-            box-sizing: border-box;
-        }
-
-        .code {
-            background: #0b1220;
-            color: var(--codefg);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
-            font-size: 13px;
-            overflow: auto;
-        }
-
-        .code pre {
-            margin: 0;
-            white-space: pre-wrap;
-            word-break: break-all
-        }
-
-        .render {
-            background: var(--card);
-            border: 1px dashed var(--border);
-            color: var(--accent)
-        }
-
-        .tips {
-            color: var(--muted);
-            font-size: 13px;
-            margin-top: 8px
-        }
-
-        table.ref {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 8px
-        }
-
-        table.ref td,
-        table.ref th {
-            border: 1px solid var(--border);
-            padding: 8px;
-            vertical-align: top
-        }
-
-        code.inline {
-            background: #f1f5f9;
-            padding: 2px 6px;
-            border-radius: 6px;
-            font-family: ui-monospace, monospace;
-            font-size: 13px
-        }
-
-        .small {
-            font-size: 13px;
-            color: var(--muted)
-        }
-
-        footer {
-            margin-top: 12px;
-            color: var(--muted);
-            font-size: 13px
-        }
-
-        /* helpers for visible outputs */
-        .vis {
-            padding: 10px;
-            border-radius: 6px;
-            background: white;
-            display: inline-block
-        }
-
-        .muted {
-            color: var(--muted);
-            font-size: 13px
-        }
-
-        /* responsive */
-        @media (max-width:820px) {
-            .example {
-                flex-direction: column
-            }
-
-            .code,
-            .render {
-                width: 100%
-            }
-        }
-    </style>
 </head>
 
-<body>
-    <header>
-        <div>
-            <h1>WaMS — Expanded HTML & CSS Reviewer</h1>
-            <p class="lead">Explanations, code you can copy, and the *rendered* output — all in one page.</p>
+<body onload="js_pageLoad()">
+
+    <!-- Custom Message Box -->
+    <div id="message-box">
+        <div id="message-content">
+            <p id="message-text">This is a message.</p>
+            <button id="message-button" onclick="hideMessage()">OK</button>
         </div>
-    </header>
+    </div>
 
-    <main>
+    <h1>WMS Activities Showcase</h1>
 
-        <!-- 1 Emphasis & Importance -->
-        <section class="card" id="emphasis">
-            <h2>1. Emphasis & Importance</h2>
-            <p class="small">Semantic tags help accessibility (screen readers) & indexing. Use semantic tags for meaning
-                — visual tags for style only.</p>
+    <!-- 
+      ======================================================================
+      PART 1: HTML FORMATTING ACTIVITIES
+      ======================================================================
+    -->
+    <section id="html-formatting" class="mb-12">
+        <h2>Part 1: HTML Formatting Activities</h2>
+        <p class="subtitle">Demonstrating semantic HTML tags. The "Syntax" is the code used, and the "Output" is the
+            rendered result.</p>
 
-            <table class="ref">
-                <thead>
-                    <tr>
-                        <th>Tag</th>
-                        <th>Meaning</th>
-                        <th>Code (copy) &amp; Rendered output</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>&lt;em&gt;</td>
-                        <td>Emphasized (semantic)</td>
-                        <td>
-                            <div class="example">
-                                <div class="code">
-                                    <pre>&lt;p&gt;When speaking, &lt;em&gt;emphasis&lt;/em&gt; changes tone.&lt;/p&gt;</pre>
-                                </div>
-                                <div class="render">
-                                    <p>When speaking, <em>emphasis</em> changes tone.</p>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&lt;strong&gt;</td>
-                        <td>Strong importance (semantic)</td>
-                        <td>
-                            <div class="example">
-                                <div class="code">
-                                    <pre>&lt;p&gt;This is &lt;strong&gt;important&lt;/strong&gt; — act now.&lt;/p&gt;</pre>
-                                </div>
-                                <div class="render">
-                                    <p>This is <strong>important</strong> — act now.</p>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&lt;i&gt;</td>
-                        <td>Alternate voice / foreign term (visual)</td>
-                        <td>
-                            <div class="example">
-                                <div class="code">
-                                    <pre>&lt;p&gt;The phrase &lt;i&gt;per se&lt;/i&gt; is Latin.&lt;/p&gt;</pre>
-                                </div>
-                                <div class="render">
-                                    <p>The phrase <i>per se</i> is Latin.</p>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&lt;b&gt;</td>
-                        <td>Stylistic bold (no semantic weight)</td>
-                        <td>
-                            <div class="example">
-                                <div class="code">
-                                    <pre>&lt;p&gt;Remember this &lt;b&gt;keyword&lt;/b&gt; in the UI.&lt;/p&gt;</pre>
-                                </div>
-                                <div class="render">
-                                    <p>Remember this <b>keyword</b> in the UI.</p>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&lt;small&gt; &amp; &lt;mark&gt;</td>
-                        <td>Side notes &amp; highlights</td>
-                        <td>
-                            <div class="example">
-                                <div class="code">
-                                    <pre>&lt;p&gt;Terms apply. &lt;small&gt;Offer ends tonight.&lt;/small&gt; Search shows &lt;mark&gt;highlighted&lt;/mark&gt; matches.&lt;/p&gt;</pre>
-                                </div>
-                                <div class="render">
-                                    <p>Terms apply. <small>Offer ends tonight.</small> Search shows
-                                        <mark>highlighted</mark> matches.
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="grid-container grid-cols-2">
 
-            <p class="tips">Tip: If you want screen readers to emphasize, use <code class="inline">&lt;em&gt;</code> —
-                if you only want bold text visually (no change to meaning) use <code class="inline">&lt;b&gt;</code>.
-            </p>
-        </section>
+            <!-- Activity 1.1: Author Spotlight -->
+            <div class="activity-card">
+                <h3>1.1: Author Spotlight</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;p&gt;Published &lt;time datetime="1925-04-10"&gt;Apr 10, 1925&lt;/time&gt; by &lt;abbr title="F. Scott Fitzgerald"&gt;FSF&lt;/abbr&gt;.&lt;/p&gt;
 
-        <!-- 2 Edits & Annotations -->
-        <section class="card" id="edits">
-            <h2>2. Edits & Annotations</h2>
-            <p class="small">Show changes, corrections, or scientific notation.</p>
+&lt;blockquote cite="..."&gt;
+  “So we beat on, boats against the current...”
+  &lt;br&gt;— &lt;cite&gt;The Great Gatsby&lt;/cite&gt;
+&lt;/blockquote&gt;
 
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;p&gt;Price was &lt;del&gt;$59&lt;/del&gt; now &lt;ins datetime="2025-10-02"&gt;$49&lt;/ins&gt;.&lt;/p&gt;</pre>
-                </div>
-                <div class="render">
-                    <p>Price was <del>$59</del> now <ins datetime="2025-10-02">$49</ins>.</p>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;p&gt;Einstein: E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
-Water: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;</pre>
-                </div>
-                <div class="render">
-                    <p>Einstein: E = mc<sup>2</sup><br>Water: H<sub>2</sub>O</p>
-                </div>
-            </div>
-
-            <p class="tips">Use <code class="inline">&lt;ins&gt;</code> with a <code class="inline">datetime</code>
-                attribute when tracking versioned insertions.</p>
-        </section>
-
-        <!-- 3 Code & Literals -->
-        <section class="card" id="code">
-            <h2>3. Code & Literals</h2>
-            <p class="small">Show in-line code, blocks, keyboard shortcuts, program outputs, and variables.</p>
-
-            <div class="example">
-                <div class="code">
-                    <pre>Run &lt;code&gt;npm install&lt;/code&gt; to add dependencies.</pre>
-                </div>
-                <div class="render">
-                    <p>Run <code>npm install</code> to add dependencies.</p>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;pre&gt;
-Line 1 stays
-  Line 2 keeps   spaces
-    Line 3 keeps\nnewlines
-&lt;/pre&gt;</pre>
-                </div>
-                <div class="render">
-                    <pre style="background:#f3f6fb;border-radius:6px;padding:8px;margin:0">Line 1 stays
-  Line 2 keeps   spaces
-    Line 3 keeps\nnewlines</pre>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;.
-Output: &lt;samp&gt;Saved.&lt;/samp&gt;. Formula: &lt;var&gt;x&lt;/var&gt; = &lt;var&gt;y&lt;/var&gt; + 2.
-</pre>
-                </div>
-                <div class="render">
-                    <p>Press <kbd>Ctrl</kbd> + <kbd>S</kbd>. Output: <samp>Saved.</samp> Formula: <var>x</var> =
-                        <var>y</var> + 2.
-                    </p>
-                </div>
-            </div>
-
-            <p class="tips">Use `<code>&lt;pre&gt;</code>` for code blocks where whitespace matters. Use
-                `<code>&lt;code&gt;</code>` for small inline bits and `<code>&lt;kbd&gt;</code>` for keyboard keys so
-                assistive tech knows they're keys.</p>
-        </section>
-
-        <!-- 4 Quotations, Citations & Terms -->
-        <section class="card" id="quotes">
-            <h2>4. Quotations, Citations &amp; Terms</h2>
-
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;blockquote cite="https://www.example.com"&gt;
-  “Programs must be written for people to read, and only incidentally for machines to execute.” —
-  &lt;cite&gt;Harold Abelson&lt;/cite&gt;
-&lt;/blockquote&gt;</pre>
-                </div>
-                <div class="render">
-                    <blockquote cite="https://www.example.com">
-                        “Programs must be written for people to read, and only incidentally for machines to execute.” —
-                        <cite>Harold Abelson</cite>
-                    </blockquote>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>She said, &lt;q cite="https://example.com/interview"&gt;keep learning&lt;/q&gt;.</pre>
-                </div>
-                <div class="render">
-                    <p>She said, <q cite="https://example.com/interview">keep learning</q>.</p>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;p&gt;We build for the &lt;abbr title="World Wide Web"&gt;WWW&lt;/abbr&gt;.
-A &lt;dfn&gt;Web API&lt;/dfn&gt; is a programmable interface.&lt;/p&gt;</pre>
-                </div>
-                <div class="render">
-                    <p>We build for the <abbr title="World Wide Web">WWW</abbr>. A <dfn>Web API</dfn> is a programmable
-                        interface.</p>
-                </div>
-            </div>
-
-            <p class="tips">Screen readers may speak citations differently; use `cite` attributes for traceability. Use
-                `<dfn>` the first time you define a technical term.</p>
-        </section>
-
-        <!-- 5 Text Direction & BiDi -->
-        <section class="card" id="bidi">
-            <h2>5. Text Direction &amp; BiDi</h2>
-            <p class="small">When user content can be right-to-left, isolate it to avoid layout breaks.</p>
-
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;p&gt;User: &lt;bdi&gt;ישראל&lt;/bdi&gt; — keeps surrounding layout intact.&lt;/p&gt;</pre>
-                </div>
-                <div class="render">
-                    <p>User: <bdi>ישראל</bdi> — keeps surrounding layout intact.</p>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;p&gt;Override: &lt;bdo dir="rtl"&gt;abc 123&lt;/bdo&gt;&lt;/p&gt;</pre>
-                </div>
-                <div class="render">
-                    <p>Override: <bdo dir="rtl">abc 123</bdo></p>
-                </div>
-            </div>
-
-            <p class="tips">`<bdi>` isolates; `<bdo>` forces direction. Useful when user input includes names or
-                        mixed-language snippets.</p>
-        </section>
-
-        <!-- 6 Time & Contact -->
-        <section class="card" id="time">
-            <h2>6. Time & Contact</h2>
-            <p class="small">Use machine-readable date/time and address markup for parsers and contact scraping.</p>
-
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;p&gt;Event on &lt;time datetime="2025-10-15"&gt;Oct 15, 2025&lt;/time&gt;.&lt;/p&gt;</pre>
-                </div>
-                <div class="render">
-                    <p>Event on <time datetime="2025-10-15">Oct 15, 2025</time>.</p>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;address&gt;123 Web Ave, Example City&lt;/address&gt;</pre>
-                </div>
-                <div class="render">
-                    <address>123 Web Ave, Example City</address>
-                </div>
-            </div>
-
-            <p class="tips">`<time>`'s `datetime` should be an ISO date/time string for machines. `<address>` is for
-                        contact info only (not arbitrary page locations).</p>
-        </section>
-
-        <!-- 7 Progress & Meter -->
-        <section class="card" id="progress">
-            <h2>7. Progress &amp; Meter</h2>
-            <p class="small">Use these for semantic progress UI (not generic bars).</p>
-
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;p&gt;Download: &lt;progress value="70" max="100"&gt;&lt;/progress&gt;&lt;/p&gt;</pre>
-                </div>
-                <div class="render">
-                    <p>Download: <progress value="70" max="100"></progress></p>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;p&gt;Score: &lt;meter min="0" max="10" low="3" high="7" optimum="9" value="8.2"&gt;&lt;/meter&gt;&lt;/p&gt;</pre>
-                </div>
-                <div class="render">
-                    <p>Score: <meter min="0" max="10" low="3" high="7" optimum="9" value="8.2"></meter></p>
-                </div>
-            </div>
-
-            <p class="tips">Screen readers expose these values to users; use them where the numeric meaning matters
-                (e.g., disk space, tests).</p>
-        </section>
-
-        <!-- 8 Utility Elements -->
-        <section class="card" id="utility">
-            <h2>8. Utility Elements</h2>
-
-            <div class="example">
-                <div class="code">
-                    <pre>Address line 1&lt;br&gt;Address line 2</pre>
-                </div>
-                <div class="render">
-                    <p>Address line 1<br>Address line 2</p>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>Long URL with &lt;wbr&gt;: https://example.com/super&lt;wbr&gt;long&lt;wbr&gt;path</pre>
-                </div>
-                <div class="render">
-                    <p>https://example.com/super<wbr>long<wbr>path</p>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;hr&gt; &amp; &lt;span&gt;small inline hook&lt;/span&gt;</pre>
-                </div>
-                <div class="render">
-                    <hr><span class="muted">small inline hook</span>
-                </div>
-            </div>
-
-            <p class="tips">Use `<wbr>` where long unbroken strings may break layout on small screens (URLs, long tokens).
-            </p>
-        </section>
-
-        <!-- 9 Lists -->
-        <section class="card" id="lists">
-            <h2>9. Lists & Definition lists</h2>
-
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;ul&gt;
-  &lt;li&gt;Apples&lt;/li&gt;
-  &lt;li&gt;Bananas&lt;/li&gt;
-&lt;/ul&gt;</pre>
-                </div>
-                <div class="render">
-                    <ul>
-                        <li>Apples</li>
-                        <li>Bananas</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;ol&gt;
-  &lt;li&gt;First&lt;/li&gt;
-  &lt;li&gt;Second&lt;/li&gt;
-&lt;/ol&gt;</pre>
-                </div>
-                <div class="render">
-                    <ol>
-                        <li>First</li>
-                        <li>Second</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="example" style="margin-top:12px">
-                <div class="code">
-                    <pre>&lt;dl&gt;
-  &lt;dt&gt;HTML&lt;/dt&gt;
-  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
-&lt;/dl&gt;</pre>
-                </div>
-                <div class="render">
-                    <dl>
-                        <dt>HTML</dt>
-                        <dd>HyperText Markup Language</dd>
-                    </dl>
-                </div>
-            </div>
-
-            <p class="tips">Definition lists are neat for glossaries or question/answer pairs.</p>
-        </section>
-
-        <!-- 10 Entities -->
-        <section class="card" id="entities">
-            <h2>10. HTML Entities Cheatsheet</h2>
-            <table class="ref">
-                <thead>
-                    <tr>
-                        <th>Meaning</th>
-                        <th>Entity</th>
-                        <th>Renders as</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Less than</td>
-                        <td><code>&amp;lt;</code></td>
-                        <td>&lt;</td>
-                    </tr>
-                    <tr>
-                        <td>Greater than</td>
-                        <td><code>&amp;gt;</code></td>
-                        <td>&gt;</td>
-                    </tr>
-                    <tr>
-                        <td>Ampersand</td>
-                        <td><code>&amp;amp;</code></td>
-                        <td>&amp;</td>
-                    </tr>
-                    <tr>
-                        <td>Non-breaking space</td>
-                        <td><code>&amp;nbsp;</code></td>
-                        <td> </td>
-                    </tr>
-                    <tr>
-                        <td>Copyright</td>
-                        <td><code>&amp;copy;</code></td>
-                        <td>©</td>
-                    </tr>
-                    <tr>
-                        <td>Registered</td>
-                        <td><code>&amp;reg;</code></td>
-                        <td>®</td>
-                    </tr>
-                    <tr>
-                        <td>Trademark</td>
-                        <td><code>&amp;trade;</code></td>
-                        <td>™</td>
-                    </tr>
-                    <tr>
-                        <td>Euro</td>
-                        <td><code>&amp;euro;</code></td>
-                        <td>€</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="tips">When outputting user text, escape `&lt;`, `&gt;`, and `&amp;` to prevent HTML injection.</p>
-        </section>
-
-        <!-- FORMS -->
-        <section class="card" id="forms">
-            <h2>HTML Forms — Expanded</h2>
-            <p class="small">Forms collect user input. Use labels, grouping, & native validation where possible.</p>
-
-            <h3>Key Structure</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;form action="/submit" method="post"&gt;
-  &lt;label for="name"&gt;Name:&lt;/label&gt;
-  &lt;input id="name" name="name" type="text"&gt;
-  &lt;button type="submit"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</pre>
-                </div>
-                <div class="render">
-                    <form
-                        style="background:#fff;padding:12px;border-radius:8px;border:1px solid var(--border);max-width:480px">
-                        <label for="name">Name:</label><br>
-                        <input id="name" name="name" type="text" style="padding:6px;margin:6px 0; width:100%"><br>
-                        <button type="submit"
-                            style="padding:8px 10px;background:var(--ok);color:white;border:none;border-radius:6px">Submit</button>
-                    </form>
-                </div>
-            </div>
-
-            <h3 style="margin-top:12px">1) Input types</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;input type="text"&gt;
-&lt;input type="password"&gt;
-&lt;input type="email"&gt;
-&lt;input type="date"&gt;
-&lt;input type="number"&gt;</pre>
-                </div>
-                <div class="render">
-                    <div style="display:flex;flex-direction:column;gap:8px;max-width:480px">
-                        <input placeholder="text" />
-                        <input type="password" placeholder="password" />
-                        <input type="email" placeholder="email@example.com" />
-                        <input type="date" />
-                        <input type="number" placeholder="42" />
+&lt;p&gt;An interviewer once said, &lt;q cite="..."&gt;keep learning&lt;/q&gt;.&lt;/p&gt;</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <p class="mb-2">Published <time datetime="1925-04-10">Apr 10, 1925</time> by <abbr
+                                title="F. Scott Fitzgerald">FSF</abbr>.</p>
+                        <blockquote cite="https://en.wikipedia.org/wiki/The_Great_Gatsby">
+                            “So we beat on, boats against the current...”
+                            <br>— <cite>The Great Gatsby</cite>
+                        </blockquote>
+                        <p>An interviewer once said, <q cite="https://example.com/interview">keep learning</q>.</p>
                     </div>
                 </div>
             </div>
 
-            <h3 style="margin-top:12px">2) Radio & Checkboxes</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;label&gt;&lt;input type="radio" name="g"&gt; Male&lt;/label&gt;
-&lt;label&gt;&lt;input type="radio" name="g"&gt; Female&lt;/label&gt;
+            <!-- Activity 1.2: Product Changelog -->
+            <div class="activity-card">
+                <h3>1.2: Product Changelog</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;p&gt;Pro plan &lt;del&gt;$29&lt;/del&gt; → 
+   &lt;ins datetime="2025-10-02"&gt;$24&lt;/ins&gt; 
+   &lt;mark&gt;Limited promo&lt;/mark&gt;
+&lt;/p&gt;
 
-&lt;label&gt;&lt;input type="checkbox"&gt; Coding&lt;/label&gt;</pre>
-                </div>
-                <div class="render">
-                    <label><input type="radio" name="g"> Male</label><br>
-                    <label><input type="radio" name="g"> Female</label><br><br>
-                    <label><input type="checkbox"> Coding</label>
-                </div>
-            </div>
+&lt;small&gt;Ends &lt;time datetime="2025-10-15"&gt;Oct 15, 2025&lt;/time&gt;.&lt;/small&gt;
 
-            <h3 style="margin-top:12px">3) Dropdown & Textarea</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;select&gt;
-  &lt;option&gt;USA&lt;/option&gt;
-&lt;/select&gt;
-
-&lt;textarea rows="4" cols="30"&gt;&lt;/textarea&gt;</pre>
-                </div>
-                <div class="render">
-                    <select style="padding:6px">
-                        <option>USA</option>
-                    </select><br><br>
-                    <textarea rows="4" cols="30" style="width:100%;max-width:480px"></textarea>
-                </div>
-            </div>
-
-            <h3 style="margin-top:12px">4) Buttons</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;button type="submit"&gt;Submit&lt;/button&gt;
-&lt;button type="reset"&gt;Reset&lt;/button&gt;
-&lt;input type="button" value="Click Me"&gt;</pre>
-                </div>
-                <div class="render">
-                    <button type="submit">Submit</button>
-                    <button type="reset">Reset</button>
-                    <input type="button" value="Click Me">
-                </div>
-            </div>
-
-            <h3 style="margin-top:12px">5) Useful Attributes</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;input placeholder="Enter username" required&gt;
-&lt;input pattern="[0-9]{4}" placeholder="4-digit code"&gt;
-&lt;input disabled&gt;</pre>
-                </div>
-                <div class="render">
-                    <input placeholder="Enter username" required style="padding:6px">
-                    <input pattern="[0-9]{4}" placeholder="4-digit code" style="padding:6px">
-                    <input disabled placeholder="disabled">
-                    <div class="small muted">Try submitting (browser native validation will run if you wire it up).
+&lt;p&gt;Rollout progress: &lt;progress max="100" value="65"&gt;&lt;/progress&gt;&lt;/p&gt;</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <p>Pro plan <del>$29</del> →
+                            <ins datetime="2025-10-02">$24</ins>
+                            <mark>Limited promo</mark>
+                        </p>
+                        <small>Ends <time datetime="2025-10-15">Oct 15, 2025</time>.</small>
+                        <p class="mt-2">Rollout progress: <progress max="100" value="65"></progress></p>
                     </div>
                 </div>
             </div>
 
-            <h3 style="margin-top:12px">6) Range & Progress</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;input type="range" min="0" max="100" value="50"&gt;
-&lt;progress value="70" max="100"&gt;&lt;/progress&gt;</pre>
-                </div>
-                <div class="render">
-                    <input type="range" min="0" max="100" value="50"><br><br>
-                    <progress value="70" max="100"></progress>
-                </div>
-            </div>
+            <!-- Activity 1.3: Science Fact Sheet -->
+            <div class="activity-card">
+                <h3>1.3: Science Fact Sheet</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;p&gt;E = &lt;var&gt;m&lt;/var&gt;&lt;var&gt;c&lt;/var&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
 
-            <h3 style="margin-top:12px">7) Fieldset & Legend</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;fieldset&gt;
-  &lt;legend&gt;Personal Info&lt;/legend&gt;
-  &lt;input type="text" name="fname"&gt;
-&lt;/fieldset&gt;</pre>
-                </div>
-                <div class="render">
-                    <fieldset style="max-width:480px;padding:12px">
-                        <legend>Personal Info</legend>
-                        <input type="text" name="fname" placeholder="First name">
-                    </fieldset>
-                </div>
-            </div>
+&lt;p&gt;Water formula: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
 
-            <h3 style="margin-top:12px">8) Datalist (autocomplete)</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;input list="browsers"&gt;
-&lt;datalist id="browsers"&gt;
-  &lt;option value="Chrome"&gt;
-  &lt;option value="Firefox"&gt;
-&lt;/datalist&gt;</pre>
-                </div>
-                <div class="render">
-                    <input list="browsers" placeholder="Choose a browser">
-                    <datalist id="browsers">
-                        <option value="Chrome">
-                        <option value="Firefox">
-                    </datalist>
-                </div>
-            </div>
+&lt;p&gt;&lt;dfn&gt;&lt;abbr title="Adenosine Triphosphate"&gt;ATP&lt;/abbr&gt;&lt;/dfn&gt; is...&lt;/p&gt;
 
-            <h3 style="margin-top:12px">9) Calculated Output</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;form oninput="result.value=parseInt(a.value||0)+parseInt(b.value||0)"&gt;
-  &lt;input type="number" name="a" value="5"&gt; +
-  &lt;input type="number" name="b" value="7"&gt; =
-  &lt;output name="result"&gt;12&lt;/output&gt;
-&lt;/form&gt;</pre>
-                </div>
-                <div class="render">
-                    <form oninput="result.value=parseInt(a.value||0)+parseInt(b.value||0)">
-                        <input type="number" name="a" value="5"> +
-                        <input type="number" name="b" value="7"> =
-                        <output name="result">12</output>
-                    </form>
-                </div>
-            </div>
-
-            <h3 style="margin-top:12px">10) Labels & Accessibility</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;label for="email"&gt;Email Address:&lt;/label&gt;
-&lt;input type="email" id="email" name="email"&gt;</pre>
-                </div>
-                <div class="render">
-                    <label for="email">Email Address:</label><br>
-                    <input type="email" id="email" name="email" style="padding:6px">
-                </div>
-            </div>
-
-            <p class="tips">Best practices: always use `<label>`; don't rely on placeholders for important instructions;
-                    keep forms short.</p>
-        </section>
-
-        <!-- CSS Fundamentals -->
-        <section class="card" id="css">
-            <h2>CSS Fundamentals — Expanded</h2>
-            <p class="small">Concise foundation: cascade, specificity, box model, layout, responsiveness, typography.
-            </p>
-
-            <h3>Cascade &amp; Specificity</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>/* selector specificity example */
-p { color: blue; }         /* element = low */
-.myclass { color: green; } /* class = higher */
-#myid { color: red; }      /* id = even higher */
-/* inline styles beat all (except !important) */</pre>
-                </div>
-                <div class="render">
-                    <p class="vis">Rendered text shows how different selectors override one another depending on
-                        specificity.</p>
-                </div>
-            </div>
-
-            <h3 style="margin-top:12px">Inheritance</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>body { color: #333; font-family: Inter; }
-section { /* section inherits color & font unless overridden */ }</pre>
-                </div>
-                <div class="render">
-                    <p class="vis">Child elements inherit text color and font-family by default.</p>
-                </div>
-            </div>
-
-            <h3 style="margin-top:12px">Box Model</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>.box { box-sizing: border-box; width:200px; padding:10px; border:2px solid #ddd; }</pre>
-                </div>
-                <div class="render">
-                    <div style="width:200px;padding:10px;border:2px solid #ddd;border-radius:6px">.box — width includes
-                        padding &amp; border</div>
-                </div>
-            </div>
-
-            <h3 style="margin-top:12px">Layout Basics</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>/* Flex example */
-.container{ display:flex; gap:12px; }
-.child{ flex:1 1 200px; }</pre>
-                </div>
-                <div class="render">
-                    <div style="display:flex;gap:12px">
-                        <div style="flex:1 1 120px;padding:10px;border:1px solid var(--border)">Flex item 1</div>
-                        <div style="flex:1 1 120px;padding:10px;border:1px solid var(--border)">Flex item 2</div>
+&lt;p&gt;pH level: &lt;meter min="0" max="14" low="3" high="11" value="7.0" optimum="7"&gt;7.0&lt;/meter&gt;&lt;/p&gt;</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <p>Einstein's formula: E = <var>m</var><var>c</var><sup>2</sup></p>
+                        <p>Water formula: H<sub>2</sub>O</p>
+                        <p><dfn><abbr title="Adenosine Triphosphate">ATP</abbr></dfn> is the energy currency of the
+                            cell.</p>
+                        <p>pH level: <meter min="0" max="14" low="3" high="11" value="7.0" optimum="7">7.0</meter>
+                            (Neutral)</p>
                     </div>
                 </div>
             </div>
 
-            <h3 style="margin-top:12px">Positioning</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>position: static|relative|absolute|fixed|sticky;</pre>
-                </div>
-                <div class="render">
-                    <p class="muted">Use <code class="inline">position:sticky; top:0;</code> to pin toolbars. Use
-                        <code>absolute</code> when removing from flow.
-                    </p>
+            <!-- Activity 1.4: Event Flyer -->
+            <div class="activity-card">
+                <h3>1.4: Event Flyer</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;p&gt;&lt;time datetime="2025-11-20T18:00"&gt;Nov 20, 2025 — 6:00 PM&lt;/time&gt;&lt;/p&gt;
+
+&lt;address&gt;
+    123 Web Ave&lt;br&gt;
+    Example City, PH
+&lt;/address&gt;
+
+&lt;!-- Use CSS 'word-break: break-all' for long URLs --&gt;
+&lt;p class="url-break"&gt;Info: https://example.com/verylongeventurl&lt;/p&gt;
+
+&lt;small&gt;Agenda subject to change.&lt;/small&gt;</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <p><time datetime="2025-11-20T18:00">Nov 20, 2025 — 6:00 PM</time></p>
+                        <address>
+                            123 Web Ave<br>
+                            Example City, PH
+                        </address>
+                        <p class="url-break">Info: https://example.com/verylongeventurl</p>
+                        <small>Agenda subject to change.</small>
+                    </div>
                 </div>
             </div>
 
-            <h3 style="margin-top:12px">Responsive Tips</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>/* mobile-first */
-.container{ width:100%; max-width:1200px; margin:0 auto; padding:12px; }
+        </div>
+    </section>
 
-/* fluid text */
-h1{ font-size:clamp(20px, 4vw, 36px); }</pre>
-                </div>
-                <div class="render">
-                    <p class="muted">Use relative units (%, em, rem, vw) and clamp() for fluid typography. Add viewport
-                        meta (already present).</p>
+    <!-- 
+      ======================================================================
+      PART 2: HTML FORMS ACTIVITIES
+      ======================================================================
+    -->
+    <section id="html-forms" class="mb-12">
+        <h2>Part 2: HTML Forms Activities</h2>
+        <div class="grid-container grid-cols-2">
+
+            <!-- Activity 2.1: Contact Form -->
+            <div class="activity-card">
+                <h3>2.1: Contact Form</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;form action="#" method="post"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="fname"&gt;First Name&lt;/label&gt;
+        &lt;input type="text" id="fname" name="fname"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+        &lt;label for="email"&gt;Email&lt;/label&gt;
+        &lt;input type="email" id="email" name="email"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+        &lt;label for="msg"&gt;Message&lt;/label&gt;
+        &lt;textarea id="msg" name="msg" rows="4"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+
+    &lt;button type="submit" class="btn btn-blue"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="fname">First Name</label>
+                                <input type="text" id="fname" name="fname">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="msg">Message</label>
+                                <textarea id="msg" name="msg" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-blue">Send</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-            <h3 style="margin-top:12px">Typography &amp; Spacing</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>h1,h2,h3 { line-height:1.4; }
-p { line-height:1.6; margin-bottom:12px; }</pre>
-                </div>
-                <div class="render">
-                    <p class="vis">Readable line-height (~1.5) and consistent vertical rhythm (spacing) improve UX.</p>
+            <!-- Activity 2.2: Registration Form -->
+            <div class="activity-card">
+                <h3>2.2: Registration (Validation)</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;form action="#" method="post"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Account&lt;/legend&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="username"&gt;Username&lt;/label&gt;
+            &lt;input type="text" id="username" required&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="password"&gt;Password&lt;/label&gt;
+            &lt;input type="password" id="password" required 
+                   pattern=".{8,}" title="8+ characters"&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    &lt;button type="submit" class="btn btn-green"&gt;Create Account&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <form action="#" method="post">
+                            <fieldset>
+                                <legend>Account</legend>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" required pattern=".{8,}"
+                                        title="8+ characters">
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-green">Create Account</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-            <h3 style="margin-top:12px">Color &amp; Contrast</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>/* ensure contrast >= 4.5:1 for body text */</pre>
-                </div>
-                <div class="render">
-                    <p class="muted">Avoid pure black (#000) on pure white (#fff) for comfort; prefer near-black &amp;
-                        off-white.</p>
+            <!-- Activity 2.3: Survey Form -->
+            <div class="activity-card">
+                <h3>2.3: Survey</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;fieldset&gt;
+    &lt;legend&gt;Topics you like&lt;/legend&gt;
+    &lt;div class="checkbox-group"&gt;
+        &lt;label&gt;&lt;input type="checkbox" name="topics" value="html"&gt; &lt;span&gt;HTML&lt;/span&gt;&lt;/label&gt;
+        &lt;label&gt;&lt;input type="checkbox" name="topics" value="css"&gt; &lt;span&gt;CSS&lt;/span&gt;&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Preferred difficulty&lt;/legend&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;label&gt;&lt;input type="radio" name="level" value="beginner"&gt; &lt;span&gt;Beginner&lt;/span&gt;&lt;/label&gt;
+        &lt;label&gt;&lt;input type="radio" name="level" value="intermediate"&gt; &lt;span&gt;Intermediate&lt;/span&gt;&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <form action="#" method="post">
+                            <fieldset>
+                                <legend>Topics you like</legend>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="topics" value="html"> <span>HTML</span></label>
+                                    <label><input type="checkbox" name="topics" value="css"> <span>CSS</span></label>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Preferred difficulty</legend>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="level" value="beginner">
+                                        <span>Beginner</span></label>
+                                    <label><input type="radio" name="level" value="intermediate">
+                                        <span>Intermediate</span></label>
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-indigo">Submit Survey</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
-            <h3 style="margin-top:12px">Inline CSS Example</h3>
-            <div class="example">
-                <div class="code">
-                    <pre>&lt;div style="color:#0f172a; background:#f1f5f9; padding:16px; border-radius:8px;"&gt;Inline styled box&lt;/div&gt;</pre>
-                </div>
-                <div class="render">
-                    <div
-                        style="color:#0f172a; background:#f1f5f9; padding:16px; border-radius:8px; display:inline-block">
-                        Inline styled box</div>
-                </div>
-            </div>
-        </section>
+            <!-- Activity 2.4: Mini Calculator -->
+            <div class="activity-card">
+                <h3>2.4: Mini Calculator (<code>&lt;output&gt;</code>)</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;form oninput="calc_result.value=parseInt(calc_a.value||0)+parseInt(calc_b.value||0)" class="calculator-form"&gt;
+    
+    &lt;input type="number" id="calc_a" value="5"&gt;
+    
+    &lt;span&gt;+&lt;/span&gt;
+    
+    &lt;input type="number" id="calc_b" value="7"&gt;
+    
+    &lt;span&gt;=&lt;/span&gt;
+    
+    &lt;output name="calc_result" for="calc_a calc_b"&gt;12&lt;/output&gt;
 
-        <footer>
-            <div class="small">Made as
-                <code>wams-reviewer.html</code> and can be open in a browser.
+&lt;/form&gt;</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <form oninput="calc_result.value=parseInt(calc_a.value||0)+parseInt(calc_b.value||0)"
+                            class="calculator-form">
+                            <input type="number" id="calc_a" value="5">
+                            <span>+</span>
+                            <input type="number" id="calc_b" value="7">
+                            <span>=</span>
+                            <output name="calc_result" for="calc_a calc_b">12</output>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="small" style="margin-top:8px">Made by V3
-            </div>
-        </footer>
 
-    </main>
-    <script src="script.js"></script>
+        </div>
+    </section>
+
+    <!-- 
+      ======================================================================
+      PART 3: CSS & RWD ACTIVITY
+      ======================================================================
+    -->
+    <section id="css-rwd" class="mb-12">
+        <h2>Part 3: CSS & RWD Activity</h2>
+        <div class="activity-card">
+            <h3>Responsive Breakpoint Demo</h3>
+            <div class="syntax-output-grid">
+                <div class="syntax-display">
+                    <h4>CSS Syntax (from style.css)</h4>
+                    <pre><code>/* Default: Red */
+#rwd-demo-box {
+    background-color: #ef4444;
+}
+#rwd-demo-box::before {
+    content: 'Extra Small Screen (&lt; 600px)';
+}
+
+/* Small devices (600px and up) */
+@media only screen and (min-width: 600px) {
+    #rwd-demo-box {
+        background-color: #f97316; /* Orange */
+    }
+    #rwd-demo-box::before {
+        content: 'Small Screen (600px - 767px)';
+    }
+}
+
+/* Medium devices (768px and up) */
+@media only screen and (min-width: 768px) {
+    #rwd-demo-box {
+        background-color: #22c55e; /* Green */
+    }
+    #rwd-demo-box::before {
+        content: 'Medium Screen (768px - 991px)';
+    }
+}
+
+/* ...and so on for Large and Extra Large ... */</code></pre>
+                </div>
+                <div class="output-display">
+                    <h4>Output</h4>
+                    <p class="mb-4">Resize your browser to see this box change color and text.</p>
+                    <div id="rwd-demo-box">
+                        <!-- Content is added by CSS ::before pseudo-element -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+      ======================================================================
+      PART 4: JAVASCRIPT & DOM ACTIVITIES
+      ======================================================================
+    -->
+    <section id="javascript-dom" class="mb-12">
+        <h2>Part 4: JavaScript & DOM Activities</h2>
+
+        <div class="grid-container grid-cols-2">
+
+            <!-- Activity 4.1: onblur -->
+            <div class="activity-card">
+                <h3>4.1: <code>onblur</code> Event</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;input type="text" onblur="js_upperCase(this)"&gt;</code></pre>
+                        <h4>JavaScript Syntax (from script.js)</h4>
+                        <pre><code>function js_upperCase(element) {
+    element.value = element.value.toUpperCase();
+}</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <div class="js-activity">
+                            <label for="js-onblur">Type here and click out</label>
+                            <input type="text" id="js-onblur" onblur="js_upperCase(this)"
+                                placeholder="Text will uppercase">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4.2: onchange -->
+            <div class="activity-card">
+                <h3>4.2: <code>onchange</code> Event</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;select onchange="js_selectChange(this)"&gt;
+    &lt;option value="White"&gt;White&lt;/option&gt;
+    &lt;option value="Black"&gt;Black&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                        <h4>JavaScript Syntax (from script.js)</h4>
+                        <pre><code>function js_selectChange(selectElement) {
+    var x = selectElement.value;
+    if (x) {
+        showMessage("You selected: " + x);
+    }
+}</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <div class="js-activity">
+                            <label for="js-onchange">Select a color</label>
+                            <select id="js-onchange" onchange="js_selectChange(this)">
+                                <option value="">Select...</option>
+                                <option value="White">White</option>
+                                <option value="Black">Black</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4.3: onfocus -->
+            <div class="activity-card">
+                <h3>4.3: <code>onfocus</code> / <code>onblur</code></h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;input type="text" onfocus="js_focus(this)" onblur="js_focusOut(this)"&gt;</code></pre>
+                        <h4>JavaScript Syntax (from script.js)</h4>
+                        <pre><code>function js_focus(element) {
+    element.style.background = "#fef08a";
+}
+function js_focusOut(element) {
+    element.style.background = "white";
+}</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <div class="js-activity">
+                            <label for="js-onfocus">Click into this field</label>
+                            <input type="text" id="js-onfocus" onfocus="js_focus(this)" onblur="js_focusOut(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4.4: onkeyup -->
+            <div class="activity-card">
+                <h3>4.4: <code>onkeyup</code> Event</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;input type="text" onkeyup="js_keyUp(this)"&gt;</code></pre>
+                        <h4>JavaScript Syntax (from script.js)</h4>
+                        <pre><code>function js_keyUp(element) {
+    element.value = element.value.toUpperCase();
+}</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <div class="js-activity">
+                            <label for="js-onkeyup">Text to Uppercase</label>
+                            <input type="text" id="js-onkeyup" onkeyup="js_keyUp(this)" placeholder="Type here...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4.5: onmousedown / onmouseup -->
+            <div class="activity-card">
+                <h3>4.5: <code>onmousedown</code> / <code>onmouseup</code></h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;p id="js-mousedown" 
+   onmousedown="js_mouseDown(this)" 
+   onmouseup="js_mouseUp(this)"&gt;
+    Click and hold this text
+&lt;/p&gt;</code></pre>
+                        <h4>JavaScript Syntax (from script.js)</h4>
+                        <pre><code>function js_mouseDown(element) {
+    element.style.color = "#ef4444"; // red
+}
+function js_mouseUp(element) {
+    element.style.color = "#22c55e"; // green
+}</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <div class="js-activity">
+                            <label>Click and hold this text</label>
+                            <p id="js-mousedown" onmousedown="js_mouseDown(this)" onmouseup="js_mouseUp(this)">
+                                Click and hold this text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4.6: addEventListener -->
+            <div class="activity-card">
+                <h3>4.6: <code>addEventListener()</code></h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;button id="js-eventlistener-btn"&gt;Click Me&lt;/button&gt;</code></pre>
+                        <h4>JavaScript Syntax (from script.js)</h4>
+                        <pre><code>// Runs after the page is loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+    
+    const listenerButton = document.getElementById("js-eventlistener-btn");
+    
+    if (listenerButton) {
+        listenerButton.addEventListener("click", js_eventListenerFunction);
+    }
+});
+
+function js_eventListenerFunction() {
+    showMessage("Triggered by addEventListener!");
+}</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <div class="js-activity">
+                            <label>Modern Event Method</label>
+                            <button id="js-eventlistener-btn" class="btn btn-blue" style="width: auto;">Click
+                                Me</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4.7: Form Validation -->
+            <div class="activity-card">
+                <h3>4.7: JS Form Validation</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;form name="jsFormValidate" onsubmit="return js_validateForm()"&gt;
+    &lt;label for="jsv-name"&gt;Name&lt;/label&gt;
+    &lt;input type="text" name="name" id="jsv-name"&gt;
+
+    &lt;label for="jsv-num"&gt;Number&lt;/label&gt;
+    &lt;input type="text" name="num" id="jsv-num"&gt;
+    &lt;span id="jsv-numloc" class="form-error"&gt;&lt;/span&gt;
+    
+    &lt;button type="submit"&gt;Validate&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                        <h4>JavaScript Syntax (from script.js)</h4>
+                        <pre><code>function js_validateForm() {
+    let name = document.jsFormValidate.name.value;
+    let num = document.jsFormValidate.num.value;
+    let numLoc = document.getElementById("jsv-numloc");
+    
+    numLoc.innerHTML = ""; // Clear old error
+
+    if (name == null || name == "") {
+        showMessage("Name can't be blank");
+        return false;
+    }
+    if (num != "" && isNaN(num)) {
+        numLoc.innerHTML = "Enter Numeric value only";
+        return false;
+    }
+    
+    showMessage("Form is valid!");
+    return false; // Prevent submission
+}</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <form name="jsFormValidate" onsubmit="return js_validateForm()">
+                            <div class="js-activity">
+                                <label for="jsv-name">Name (Can't be blank)</label>
+                                <input type="text" name="name" id="jsv-name">
+                            </div>
+                            <div class="js-activity">
+                                <label for="jsv-num">Number (Numeric only)</label>
+                                <input type="text" name="num" id="jsv-num">
+                                <span id="jsv-numloc" class="form-error"></span>
+                            </div>
+                            <button type="submit" class="btn btn-green" style="margin-top: 1rem;">Validate</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4.8: DOM Manipulation -->
+            <div class="activity-card">
+                <h3>4.8: DOM Manipulation</h3>
+                <div class="syntax-output-grid">
+                    <div class="syntax-display">
+                        <h4>HTML Syntax</h4>
+                        <pre><code>&lt;h4 id="js-dom-header" onclick="js_getElement()"&gt;
+    &lt;code&gt;getElementById()&lt;/code&gt; (Click Me)
+&lt;/h4&gt;
+
+&lt;button onclick="js_createElement()"&gt;Add a new &lt;p&gt; element&lt;/button&gt;
+&lt;div id="dom-creation-target"&gt;&lt;/div&gt;</code></pre>
+                        <h4>JavaScript Syntax (from script.js)</h4>
+                        <pre><code>function js_getElement() {
+    var x = document.getElementById("js-dom-header");
+    showMessage("I am a " + x.tagName + " element");
+}
+
+function js_createElement() {
+    const para = document.createElement("p");
+    para.innerText = "Dynamically created paragraph.";
+    para.style.color = "#16a34a";
+    document.getElementById("dom-creation-target").appendChild(para);
+}</code></pre>
+                    </div>
+                    <div class="output-display">
+                        <h4>Output</h4>
+                        <div class="js-activity">
+                            <h4 id="js-dom-header" onclick="js_getElement()" style="cursor: pointer;">
+                                <code>getElementById()</code> (Click Me)
+                            </h4>
+                        </div>
+                        <div class="js-activity">
+                            <h4><code>createElement()</code></h4>
+                            <button onclick="js_createElement()" class="btn btn-gray" style="font-size: 0.875rem;">Add a
+                                new &lt;p&gt; element</button>
+                            <div id="dom-creation-target" class="mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js" defer></script>
+
 </body>
 
 </html>
